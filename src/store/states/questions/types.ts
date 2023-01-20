@@ -1,19 +1,16 @@
-type iQuestion = {
+export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_DISPLAYED_QUESTION"
+
+export type iQuestion = {
     clientMessage: string;
     iaMessage: string;
-}
+} | null;
 
-type QuestionType = {
+export interface QuestionType {
     imageBase64?: string;
     imageText?: string;
 }
 
-interface iQuestionState {
-    questions?: iQuestion[];
-    setQuestions: (questions: iQuestion[]) => void;
-    createQuestion: (question: QuestionType) => Promise<iQuestion | undefined>;
-
-    modalQuestion?: iQuestion;
-    showModalQuestion: (question: iQuestion) => void;
-    hideModalQuestion: () => void;
+export interface iQuestionState {
+    questions: iQuestion[];
+    displayedQuestion: iQuestion | null
 }

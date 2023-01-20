@@ -1,4 +1,5 @@
-interface iStateTheme {
+export type ThemeActionTypes = "SET_SHOW_NAVIGATION_BAR"
+
+export interface iThemeState {
     showNavigationBar: boolean;
-    toggleNavigationBar: (show?: boolean) => void;
 }

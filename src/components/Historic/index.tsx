@@ -3,10 +3,19 @@ import Spacer from "../Spacer";
 import HistoricItem from "../HistoricItem";
 import { Wrapper } from "./styles";
 import HistoricDetailsModal from "../Modals/HistoricDetailsModal";
-import { useStore } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import QuestionsSelector from "../../store/states/questions/selectors";
+import QuestionActions from "../../store/states/questions/actions";
+import { iQuestion } from "../../store/states/questions/types";
 
 const Historic = () => {
-    const { question } = useStore()
+    const dispatch = useDispatch();
+    const displayedQuestion = useSelector(QuestionsSelector.getDisplayedQuestion)
+    const questions = useSelector(QuestionsSelector.getHistoricQuestions)
+
+    const hideModalQuestion = () => {
+        dispatch(QuestionActions.hideQuestionModalAction())
+    }
 
     const renderFlatListItem = (data: iQuestion, index: number) => (
         <HistoricItem
@@ -18,16 +27,20 @@ const Historic = () => {
     return (
         <>
             <HistoricDetailsModal
-                isVisible={!!question.modalQuestion}
-                details={question.modalQuestion}
-                handleCloseModal={question.hideModalQuestion}
+                isVisible={!!displayedQuestion}
+                details={displayedQuestion}
+                handleCloseModal={hideModalQuestion}
             />
             <Wrapper>
                 <FlatList
                     style={{ width: "100%" }}
-                    data={question.questions}
+                    data={questions}
+                    keyExtractor={item => item?.clientMessage || ""}
                     ItemSeparatorComponent={() => <Spacer spacingY={15} />}
-                    renderItem={({ item, index }) => renderFlatListItem(item, index)}
+                    renderItem={({ item, index }) => item 
+                        ? renderFlatListItem(item, index) 
+                        : null
+                    }
                 />
             </Wrapper>
         </>

@@ -5,15 +5,16 @@ import GoogleIcon from "../../icons/GoogleIcon"
 import GoogleAuthenticationIntegration from "../../integrations/oauth/GoogleAuthenticationIntegration"
 import { PAGES } from "../../routes/pages"
 import storageKeys from "../../shared/storageKeys"
-import { useStore } from "../../store"
 import CTASection from "../../components/Login/CTASection"
 import { Container, CTAWrapper } from "./styles"
 import { Props } from "./types"
 import Logo from "../../components/Logo"
 import { useCallback } from "react"
+import { useDispatch } from "react-redux"
+import SessionActions from "../../store/states/session/actions"
 
 const LoginPage = ({ navigation }: Props) => {
-    const { session } = useStore();
+    const dispatch = useDispatch();
 
     const handlePressGoogleLogin = useCallback(() => {
         const onSuccessGoogleAuthentication = async (response: iGoogleAuthenticationResponse) => {
@@ -26,9 +27,10 @@ const LoginPage = ({ navigation }: Props) => {
             
             await AsyncStorage.setItem(storageKeys.token, token)
 
-            session?.setData({
-                token
-            })
+            dispatch(SessionActions.setDataAction({
+                token,
+            }))
+
             navigation.navigate(PAGES.HOME)
         }
 

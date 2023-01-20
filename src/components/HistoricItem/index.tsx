@@ -5,13 +5,14 @@ import Shadow from "../Shadow"
 import HistoricItemLeftActions from "./components/ShowDetailsSwipeableActionComponent"
 import { Wrapper } from "./styles"
 import { Props } from "./types"
-import { useStore } from "../../store";
+import { useDispatch } from "react-redux"
+import QuestionActions from "../../store/states/questions/actions"
 
 const HistoricItem = ({ data }: Props) => {
-    const { question } = useStore()
+    const dispatch = useDispatch();
 
     const handleShowDetails = () => {
-        question.showModalQuestion(data)
+        dispatch(QuestionActions.showQuestionModalAction(data))
     }
 
     return (

@@ -1,15 +1,18 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useMemo } from "react";
-import { useStore } from "../../store";
+import { useSelector } from "react-redux";
+import useToggleNavigationBarObserver from "../../hooks/useToggleNavigationBarObserver";
+import SessionSelectors from "../../store/states/session/selectors";
 import { Props } from "./types";
 
 const Stack = createNativeStackNavigator();
 
 const Router = ({ routes }: Props) => {
-    const { session } = useStore()
+    const hasSession = useSelector(SessionSelectors.hasSession)
+    useToggleNavigationBarObserver(hasSession);
 
     const initialRouteName = useMemo(() => {
-        if (!session?.hasSession) {
+        if (!hasSession) {
             return "Login"
         }
 
@@ -24,7 +27,7 @@ const Router = ({ routes }: Props) => {
             }}
         >
             {routes.map(({ name, component, needSession }) => {
-                if (needSession && !session?.hasSession) {
+                if (needSession && !hasSession) {
                     return null;
                 }
 
@@ -32,9 +35,8 @@ const Router = ({ routes }: Props) => {
                     <Stack.Screen
                         key={`route-item${name}`}
                         name={name}
-                    >
-                        {component}
-                    </Stack.Screen>
+                        component={component}
+                    />
                 )
             })}
         </Stack.Navigator>

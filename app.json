@@ -1,8 +1,7 @@
 {
   "expo": {
-    "name": "ficou-facil",
-    "slug": "ficou-facil",
-    "scheme": "ficou-facil",
+    "name": "ficou-facil-app",
+    "scheme": "ficou-facil-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

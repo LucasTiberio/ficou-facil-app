@@ -1,24 +1,17 @@
-export interface Props {
-    children: any
+import { iQuestionState } from "./states/questions/types";
+import { iSessionState } from "./states/session/types";
+import { iThemeState } from "./states/theme/types";
+
+type iPayloadType = Record<string, any> | boolean | string | number
+
+export interface iAction<Type, Payload = iPayloadType> {
+    type: Type;
+    payload: Payload
+    meta?: Record<string, any>
 }
 
-export type StoreContextType = {
-    theme: iStateTheme;
-    session: iStateSession;
-    question: iQuestionState;
-}
-
-export const dummyContext: StoreContextType = {
-    theme: {
-        showNavigationBar: false,
-        toggleNavigationBar: () => false,
-    },
-    session: {
-        hasSession: false,
-        setData: () => false
-    },
-    question: {
-        createQuestion: () => false,
-        setQuestions: () => false,
-    },
+export interface iGlobalStore {
+    questions: iQuestionState
+    theme: iThemeState
+    session: iSessionState
 }

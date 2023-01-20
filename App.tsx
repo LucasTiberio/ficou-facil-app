@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { ActivityIndicator } from 'react-native';
+import { Provider } from 'react-redux';
 
-import StoreProvider from './src/store';
 import Router from './src/components/Router';
 import routes from './src/routes';
 import useStatePersistence from './src/hooks/useStatePersistence';
-import { ActivityIndicator } from 'react-native';
+
+import store from './src/store';
 
 const App = () => {
   const { initialState, isReady, onStateChange } = useStatePersistence()
@@ -15,7 +17,7 @@ const App = () => {
   }
 
   return (
-    <StoreProvider>
+    <Provider store={store}>
       <NavigationContainer
         onStateChange={onStateChange}
         initialState={initialState}
@@ -24,7 +26,7 @@ const App = () => {
 
           {/* <StatusBar style="auto" /> */}
       </NavigationContainer>
-    </StoreProvider>
+    </Provider>
   );
 }
 

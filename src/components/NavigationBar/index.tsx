@@ -1,17 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 import { Text } from "react-native"
+import { useSelector } from "react-redux";
 
 import CameraIcon from "../../icons/Camera";
 import { PAGES } from "../../routes/pages";
-import { useStore } from "../../store";
+import ThemeSelector from "../../store/states/theme/selectors";
 import Shadow from "../Shadow";
 import { CameraWrapper, FloatingContainer, StyledNavigation } from "./styles"
 
 const NavigationBar = () => {
-    const { theme } = useStore();
+    const showNavigationBar = useSelector(ThemeSelector.showNavigationBar)
     const navigation = useNavigation<any>()
     
-    if (!theme?.showNavigationBar) {
+    if (!showNavigationBar) {
         return null;
     }
 

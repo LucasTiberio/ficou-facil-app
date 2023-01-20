@@ -1,2 +1,2 @@
-export const ENV_GOOGLE_AUTH_CLIENT_ID = process.env.GOOGLE_AUTH_CLIENT_ID || ""
-export const ENV_GOOGLE_AUTH_REDIRECT_URI = process.env.GOOGLE_AUTH_REDIRECT_URI || ""
+export const ENV_GOOGLE_AUTH_CLIENT_ID = process.env.GOOGLE_AUTH_CLIENT_ID || "580591885269-o1jl5c78b7fj5j8rihtl9s7sam0igku4.apps.googleusercontent.com"
+export const ENV_GOOGLE_AUTH_REDIRECT_URI = process.env.GOOGLE_AUTH_REDIRECT_URI || "https://auth.expo.io/@lucastiberio/ficou-facil-app"

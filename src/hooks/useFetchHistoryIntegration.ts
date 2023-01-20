@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import fetchHistoricIntegration from "../integrations/api/fetchHistoricIntegration";
-import { useStore } from "../store";
+import QuestionActions from "../store/states/questions/actions";
 
 const useFetchHistoryIntegration = () => {
-    const { question } = useStore();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +16,7 @@ const useFetchHistoryIntegration = () => {
                     ({ clientMessage, iaMessage })
                 )
 
-                question.setQuestions(adaptedDataIntoQuestions)
+                dispatch(QuestionActions.setQuestionsAction(adaptedDataIntoQuestions))
             }
         }
 

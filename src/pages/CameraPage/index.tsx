@@ -6,11 +6,12 @@ import { Container } from "./styles"
 import { Alert } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { PAGES } from "../../routes/pages"
-import { useStore } from "../../store"
+import { useDispatch } from "react-redux"
+import QuestionActions from "../../store/states/questions/actions"
 
 const CameraPage = () => {
+    const dispatch = useDispatch()
     const navigation = useNavigation<any>()
-    const { question } = useStore()
     const [picture, setPicture] = useState<iCameraPicture | undefined>(undefined)
 
     const handleTakePicture = (picture: iCameraPicture) => {
@@ -20,7 +21,11 @@ const CameraPage = () => {
     const handleSubmitPicture = async () => {
         if (!picture?.base64) return;
 
-        await question.createQuestion({ imageBase64: picture.base64 });
+        const { createdQuestion, dispatchAction } = await QuestionActions.createQuestionsAction({
+            imageBase64: picture.base64
+        })
+
+        dispatch(dispatchAction())
 
         Alert.alert("Sua pergunta ficará salva no seu histórico junto com a resposta!")
 

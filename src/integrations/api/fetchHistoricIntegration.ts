@@ -12,7 +12,7 @@ const fetchHistoricIntegration = async () => {
     const token = await AsyncStorage.getItem(storageKeys.token) || ""
 
     try {
-        const { historic } = await fetch("http://192.168.0.3:3002/api/user-historic", {
+        const { historic } = await fetch("http://localhost:3002/api/user-historic", {
             method: "GET",
             headers: {
               'Content-Type': 'application/json',

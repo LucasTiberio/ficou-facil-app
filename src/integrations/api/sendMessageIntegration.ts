@@ -13,7 +13,7 @@ const sendMessageIntegration = async ({
     const token =  await AsyncStorage.getItem(storageKeys.token) || ""
 
     try {
-        const dataJson = await fetch("http://192.168.0.3:3002/api/send-message", {
+        const dataJson = await fetch("http://localhost:3002/api/send-message", {
             method: "POST",
             body: JSON.stringify({ imageText, imageBase64 }),
             headers: {
