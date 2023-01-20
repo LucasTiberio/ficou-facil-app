@@ -8,7 +8,7 @@ export const StyledExpoCamera = styled(Camera)`
 
 export const TakePictureButton = styled.TouchableOpacity`
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 40%;
     
     width: 70px;
@@ -20,7 +20,7 @@ export const TakePictureButton = styled.TouchableOpacity`
 
 export const RetakePictureButton = styled.TouchableOpacity`
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 10%;
 
     align-items: center;
@@ -35,7 +35,7 @@ export const RetakePictureButton = styled.TouchableOpacity`
 
 export const SendPictureButton = styled.TouchableOpacity`
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     right: 10%;
 
     align-items: center;

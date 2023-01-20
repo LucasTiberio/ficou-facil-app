@@ -1,5 +1,7 @@
 import styled from "styled-components/native"
 
+export const HistoricItemBorderRadius = "6px"
+
 export const Wrapper = styled.View`
     position: relative;
 
@@ -7,7 +9,7 @@ export const Wrapper = styled.View`
     min-height: 110px;
 
     padding: 12px;
-    border-radius: 6px;
+    border-radius: ${HistoricItemBorderRadius};
 
     background-color: white;
 

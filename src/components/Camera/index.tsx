@@ -1,5 +1,6 @@
 import { Fragment, useRef, useState } from "react";
-import { Image } from "react-native";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import useCameraFlip from "../../hooks/useCameraFlip";
 import useCameraPermission from "../../hooks/useCameraPermission";
 import { RetakePictureButton, SendPictureButton, StyledExpoCamera, TakePictureButton } from "./styles";
@@ -67,18 +68,18 @@ const Camera = ({
             {freezed && (
                 <Fragment>
                     <SendPictureButton onPress={handleSubmitPicture}>
-                        <Image source={{ 
-                            uri: "https://static.thenounproject.com/png/1015122-200.png", 
-                            width: 55,
-                            height: 55
-                        }} />
+                        <MaterialCommunityIcons
+                            name="file-send"
+                            size={42}
+                            color="black"
+                        />
                     </SendPictureButton>
                     <RetakePictureButton onPress={handleUnfreezeCamera}>
-                        <Image source={{ 
-                            uri: "https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png", 
-                            width: 55,
-                            height: 55
-                        }} />
+                        <MaterialCommunityIcons
+                            name="camera-retake"
+                            size={42}
+                            color="black"
+                        />
                     </RetakePictureButton>
                 </Fragment>
             )}

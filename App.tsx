@@ -13,7 +13,7 @@ const App = () => {
   const { initialState, isReady, onStateChange } = useStatePersistence()
 
   if (!isReady) {
-      return <ActivityIndicator />;
+      return <ActivityIndicator style={{ position: "absolute", left: 100, top: 300}} color="#00ff00" size="large" animating />;
   }
 
   return (

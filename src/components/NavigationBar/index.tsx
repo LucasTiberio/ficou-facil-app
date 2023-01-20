@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { Text } from "react-native"
 import { useSelector } from "react-redux";
+import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-import CameraIcon from "../../icons/Camera";
 import { PAGES } from "../../routes/pages";
 import ThemeSelector from "../../store/states/theme/selectors";
 import Shadow from "../Shadow";
@@ -24,13 +24,25 @@ const NavigationBar = () => {
         <FloatingContainer>
             <Shadow type="small">
                 <StyledNavigation>
-                    <Text>né</Text>
+                    <Ionicons
+                        name="information-circle"
+                        size={44}
+                        color="black"
+                    />
 
                     <CameraWrapper onPress={handleClickCamera}>
-                        <CameraIcon />
+                        <MaterialCommunityIcons
+                            name="camera-plus-outline"
+                            size={34}
+                            color="white"
+                        />
                     </CameraWrapper>
 
-                    <Text>né</Text>
+                    <FontAwesome
+                        name="user-circle"
+                        size={40}
+                        color="black"
+                    />
                 </StyledNavigation>
             </Shadow>
         </FloatingContainer>

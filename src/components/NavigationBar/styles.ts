@@ -4,14 +4,16 @@ export const FloatingContainer = styled.View`
     position: absolute;
     bottom: 30px;
 
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
 `
 
 export const StyledNavigation = styled.View`
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+
+    padding: 0 24px;
 
     height: 60px;
 
@@ -23,7 +25,7 @@ export const CameraWrapper = styled.TouchableOpacity`
     position: absolute;
     width: 100%;
     top: -50%;
-    left: 40%;
+    left: 45%;
 
     width: 70px;
     height: 70px;
