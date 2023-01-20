@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native"
 import { PAGES } from "../../routes/pages"
 import { useDispatch } from "react-redux"
 import QuestionActions from "../../store/states/questions/actions"
+import { dispatchAsync } from "../../shared/utils"
 
 const CameraPage = () => {
     const dispatch = useDispatch()
@@ -21,13 +22,9 @@ const CameraPage = () => {
     const handleSubmitPicture = async () => {
         if (!picture?.base64) return;
 
-        const { createdQuestion, dispatchAction } = await QuestionActions.createQuestionsAction({
+        dispatchAsync(dispatch, QuestionActions.createQuestionsAction({
             imageBase64: picture.base64
-        })
-
-        dispatch(dispatchAction())
-
-        Alert.alert("Sua pergunta ficará salva no seu histórico junto com a resposta!")
+        }, true))
 
         navigation.navigate(PAGES.HOME);
     }

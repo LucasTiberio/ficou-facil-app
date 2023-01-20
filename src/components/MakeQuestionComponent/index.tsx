@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { Alert, NativeSyntheticEvent, TextInputChangeEventData, TextInputSubmitEditingEventData } from "react-native"
+import { NativeSyntheticEvent, TextInputChangeEventData, TextInputSubmitEditingEventData } from "react-native"
 import { useDispatch } from "react-redux"
+import { dispatchAsync } from "../../shared/utils"
 import QuestionActions from "../../store/states/questions/actions"
 import Shadow from "../Shadow"
 import { StyledTextInput } from "./styles"
@@ -14,20 +15,11 @@ const MakeQuestionComponent = () => {
     }
 
     const handleSubmitTextInputEditing = async ({ nativeEvent: { text } }: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-        const { createdQuestion, dispatchAction } = await QuestionActions.createQuestionsAction({
+        dispatchAsync(dispatch, QuestionActions.createQuestionsAction({
             imageText: text
-        })
-        dispatch(dispatchAction())
-
-        if (!createdQuestion) {
-            Alert.alert("Erro ao fazer a sua pergunta. Tente novamente")
-            return;
-        }
+        }, true))
 
         setText("")
-        Alert.alert("Sua pergunta ficará salva no seu histórico junto com a resposta!")
-
-        dispatch(QuestionActions.showQuestionModalAction(createdQuestion))
     }
 
     return (

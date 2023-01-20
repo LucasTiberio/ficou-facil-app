@@ -1,5 +1,6 @@
 import sendMessageIntegration from "../../../integrations/api/sendMessageIntegration";
 import { iAction } from "../../types";
+import ThemeActions from "../theme/actions";
 import { iQuestion, QuestionsActionTypes, QuestionType } from "./types";
 
 const addQuestionAction = (question: iQuestion): iAction<QuestionsActionTypes, iQuestion> => {
@@ -16,16 +17,23 @@ const setQuestionsAction = (questions: iQuestion[]): iAction<QuestionsActionType
     }
 }
 
-const createQuestionsAction = async (questionType: QuestionType) => {
-    const createdQuestion = await sendMessageIntegration(questionType)
+const createQuestionsAction = (questionType: QuestionType, openModal = false) => {
+    return (dispatch: any) => {
+        dispatch(ThemeActions.showGlobalLoading());
 
-    if (!createdQuestion) {
-        throw "Question Redux Actions: createQuestionsAction() error"
-    }
+        sendMessageIntegration(questionType)
+            .then(createdQuestion => {
+                if (!createdQuestion) {
+                    throw "Question Redux Actions: createQuestionsAction() error"
+                }
 
-    return {
-        createdQuestion,
-        dispatchAction: () => addQuestionAction(createdQuestion)
+                dispatch(addQuestionAction(createdQuestion));
+                dispatch(ThemeActions.hideGlobalLoading());
+
+                if (openModal) {
+                    dispatch(showQuestionModalAction(createdQuestion))
+                }
+            })
     }
 }
 

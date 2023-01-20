@@ -3,11 +3,11 @@ import Logo from "../../components/Logo";
 import MakeQuestionComponent from "../../components/MakeQuestionComponent";
 
 import NavigationBar from "../../components/NavigationBar";
-import useFetchHistory from "../../hooks/useFetchHistoryIntegration";
+import useFetchHistoryIntegration from "../../hooks/integrations/useFetchHistoryIntegration";
 import { Container, VerticalOffsetWrapper } from "./styles";
 
 const HomePage = () => {
-    useFetchHistory();
+    useFetchHistoryIntegration();
 
     return (
         <Container>

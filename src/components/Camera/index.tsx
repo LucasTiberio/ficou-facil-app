@@ -5,6 +5,8 @@ import useCameraFlip from "../../hooks/useCameraFlip";
 import useCameraPermission from "../../hooks/useCameraPermission";
 import { RetakePictureButton, SendPictureButton, StyledExpoCamera, TakePictureButton } from "./styles";
 import { iCameraPicture, iCameraRef, Props } from "./types";
+import { useDispatch } from "react-redux";
+import ThemeActions from "../../store/states/theme/actions";
 
 const Camera = ({
     onTakePicture,
@@ -12,6 +14,7 @@ const Camera = ({
     useBase64 = false,
     freezeOnTakePicture = false,
 }: Props) => {
+    const dispatch = useDispatch();
     const [freezed, setFreezed] = useState(false)
     const picture = useRef<iCameraPicture>()
     const cameraRef = useRef<iCameraRef>();
@@ -28,6 +31,8 @@ const Camera = ({
             return;
         }
 
+        dispatch(ThemeActions.showGlobalLoading())
+
         const photo = await cameraRef.current.takePictureAsync({
             base64: useBase64,
         })
@@ -41,6 +46,8 @@ const Camera = ({
                 handleFreezeCamera()
             }
         }
+
+        dispatch(ThemeActions.hideGlobalLoading())
     }
 
     const handleFreezeCamera = () => {
