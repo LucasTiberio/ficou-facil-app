@@ -11,7 +11,7 @@ const useFetchHistoryIntegration = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (!!historic) {
+            if (!!historic.length) {
                 return;
             }
 
