@@ -1,23 +1,33 @@
 import { iAction } from "../../types";
 import { ThemeActionTypes } from "./types";
 
-const showNavigationBarAction = (): iAction<ThemeActionTypes, boolean> => {
-    return {
-        type: "SET_SHOW_NAVIGATION_BAR",
-        payload: true
-    }
-}
+/** Navigation bar */
+const showNavigationBar = (): iAction<ThemeActionTypes, boolean> => ({
+    type: "SET_SHOW_NAVIGATION_BAR",
+    payload: true
+})
 
-const hideNavigationBarAction = (): iAction<ThemeActionTypes, boolean> => {
-    return {
-        type: "SET_SHOW_NAVIGATION_BAR",
-        payload: false
-    }
-}
+const hideNavigationBar = (): iAction<ThemeActionTypes, boolean> => ({
+    type: "SET_SHOW_NAVIGATION_BAR",
+    payload: false
+})
+
+/** Global Loading */
+const showGlobalLoading = (): iAction<ThemeActionTypes, boolean> => ({
+    type: "SET_GLOBAL_LOADING",
+    payload: true
+})
+
+const hideGlobalLoading = (): iAction<ThemeActionTypes, boolean> => ({
+    type: "SET_GLOBAL_LOADING",
+    payload: false
+})
 
 const ThemeActions = {
-    showNavigationBarAction,
-    hideNavigationBarAction
+    showNavigationBar,
+    hideNavigationBar,
+    showGlobalLoading,
+    hideGlobalLoading
 }
 
 export default ThemeActions;

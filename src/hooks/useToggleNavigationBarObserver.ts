@@ -9,9 +9,9 @@ const useToggleNavigationBarObserver = (shouldShow: boolean) => {
 
     const toggleNavigationBar = () => {
         if (showNavigationBar) {
-            dispatch(ThemeActions.hideNavigationBarAction())
+            dispatch(ThemeActions.hideNavigationBar())
         }else{
-            dispatch(ThemeActions.showNavigationBarAction())
+            dispatch(ThemeActions.showNavigationBar())
         }
     }
 

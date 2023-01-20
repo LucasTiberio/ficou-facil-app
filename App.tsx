@@ -8,12 +8,14 @@ import routes from './src/routes';
 import useStatePersistence from './src/hooks/useStatePersistence';
 
 import store from './src/store';
+import GlobalLoading from './src/components/GlobalLoading';
+import Loading from './src/components/Loading';
 
 const App = () => {
   const { initialState, isReady, onStateChange } = useStatePersistence()
 
   if (!isReady) {
-      return <ActivityIndicator style={{ position: "absolute", left: 100, top: 300}} color="#00ff00" size="large" animating />;
+      return <Loading />
   }
 
   return (
@@ -22,9 +24,10 @@ const App = () => {
         onStateChange={onStateChange}
         initialState={initialState}
       >
-          <Router routes={routes} />
+        <GlobalLoading />
+        <Router routes={routes} />
 
-          {/* <StatusBar style="auto" /> */}
+        {/* <StatusBar style="auto" /> */}
       </NavigationContainer>
     </Provider>
   );
