@@ -11,4 +11,5 @@ export const Container = styled.View`
 
 export const VerticalOffsetWrapper = styled.View`
     top: ${StyledTextInputHeight / -2}px;
+    width: 100%;
 `

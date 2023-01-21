@@ -4,6 +4,7 @@ import { QuestionsActionTypes, iQuestionState, iQuestion } from "./types";
 const QUESTIONS_REDUCER_INITIAL_STATE: iQuestionState = {
     displayedQuestion: null,
     questions: [],
+    isQuestionsLoading: false,
 }
 
 const QuestionsReducer = (state = QUESTIONS_REDUCER_INITIAL_STATE, action: iAction<QuestionsActionTypes>): iQuestionState => {
@@ -17,6 +18,9 @@ const QuestionsReducer = (state = QUESTIONS_REDUCER_INITIAL_STATE, action: iActi
 
         case "SET_DISPLAYED_QUESTION":
             return { ...state, displayedQuestion: action.payload  as iQuestion }
+        
+        case "SET_QUESTIONS_LOADING":
+            return { ...state, isQuestionsLoading: action.payload as boolean }
 
         default:
             return state;

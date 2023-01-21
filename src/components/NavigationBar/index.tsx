@@ -1,12 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text } from "react-native"
 import { useSelector } from "react-redux";
-import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { AntDesign, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 import { PAGES } from "../../routes/pages";
 import ThemeSelector from "../../store/states/theme/selectors";
 import Shadow from "../Shadow";
-import { CameraWrapper, FloatingContainer, StyledNavigation } from "./styles"
+import { CameraWrapper, FloatingContainer, LeftActionWrapper, RightActionWrapper, StyledNavigation } from "./styles"
 
 const NavigationBar = () => {
     const showNavigationBar = useSelector(ThemeSelector.showNavigationBar)
@@ -24,11 +23,18 @@ const NavigationBar = () => {
         <FloatingContainer>
             <Shadow type="small">
                 <StyledNavigation>
-                    <Ionicons
-                        name="information-circle"
-                        size={44}
-                        color="black"
-                    />
+                    <LeftActionWrapper>
+                        <AntDesign
+                            name="doubleleft"
+                            size={24}
+                            color="black"
+                        />
+                        <FontAwesome
+                            name="info-circle"
+                            size={47}
+                            color="black"
+                        />
+                    </LeftActionWrapper>
 
                     <CameraWrapper onPress={handleClickCamera}>
                         <MaterialCommunityIcons
@@ -38,11 +44,14 @@ const NavigationBar = () => {
                         />
                     </CameraWrapper>
 
-                    <FontAwesome
-                        name="user-circle"
-                        size={40}
-                        color="black"
-                    />
+                    <RightActionWrapper>
+                        <FontAwesome
+                            name="user-circle"
+                            size={38}
+                            color="black"
+                        />
+                        <AntDesign name="doubleright" size={24} color="black" />
+                    </RightActionWrapper>
                 </StyledNavigation>
             </Shadow>
         </FloatingContainer>

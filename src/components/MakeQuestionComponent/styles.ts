@@ -7,7 +7,7 @@ interface iStyledTextInput {
 }
 
 export const StyledTextInput = styled.TextInput`
-    width: 300px;
+    width: 90%;
     height: ${({ isLargeInput }: iStyledTextInput) => isLargeInput 
         ? StyledTextInputHeight * 3
         : StyledTextInputHeight

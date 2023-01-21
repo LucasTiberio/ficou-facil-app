@@ -1,4 +1,4 @@
-export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_DISPLAYED_QUESTION"
+export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_QUESTIONS_LOADING" | "SET_DISPLAYED_QUESTION"
 
 export type iQuestion = {
     clientMessage: string;
@@ -12,5 +12,6 @@ export interface QuestionType {
 
 export interface iQuestionState {
     questions: iQuestion[];
+    isQuestionsLoading: boolean;
     displayedQuestion: iQuestion | null
 }

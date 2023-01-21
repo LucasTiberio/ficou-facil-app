@@ -4,9 +4,15 @@ const getDisplayedQuestion = (state: iGlobalStore) => state.questions.displayedQ
 
 const getHistoricQuestions = (state: iGlobalStore) => state.questions.questions
 
+const getIsQuestionsLoading = (state: iGlobalStore) => state.questions.isQuestionsLoading
+
+const getQuestionsState = (state: iGlobalStore) => state.questions;
+
 const QuestionsSelector = {
     getDisplayedQuestion,
-    getHistoricQuestions
+    getHistoricQuestions,
+    getIsQuestionsLoading,
+    getQuestionsState,
 }
 
 export default QuestionsSelector;

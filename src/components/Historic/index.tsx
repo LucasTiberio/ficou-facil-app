@@ -9,12 +9,9 @@ import QuestionActions from "../../store/states/questions/actions";
 import { iQuestion } from "../../store/states/questions/types";
 import HistoricSkeleton from "../skeletons/HistoricSkeleton";
 
-const isLoading = false;
-
 const Historic = () => {
     const dispatch = useDispatch();
-    const displayedQuestion = useSelector(QuestionsSelector.getDisplayedQuestion)
-    const questions = useSelector(QuestionsSelector.getHistoricQuestions)
+    const { displayedQuestion, isQuestionsLoading, questions } = useSelector(QuestionsSelector.getQuestionsState)
 
     const hideModalQuestion = () => {
         dispatch(QuestionActions.hideQuestionModalAction())
@@ -27,7 +24,7 @@ const Historic = () => {
         />
     )
 
-    if (isLoading) {
+    if (isQuestionsLoading) {
         return (
             <Wrapper>
                 <HistoricSkeleton height={100} quantity={4} />
