@@ -14,6 +14,9 @@ const ThemeReducer = (state = THEME_REDUCER_INITIAL_STATE, action: iAction<Theme
         case "SET_GLOBAL_LOADING":
             return { ...state, isGlobalLoading: action.payload as boolean }
 
+        case "RESET":
+            return THEME_REDUCER_INITIAL_STATE
+
         default:
             return state;
     }

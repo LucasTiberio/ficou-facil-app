@@ -40,7 +40,7 @@ const getMe = () => {
 
 const resetSession = (): iAction<SessionActionTypes, undefined> => {
     return {
-        type: undefined,
+        type: "RESET"
     }
 }
 

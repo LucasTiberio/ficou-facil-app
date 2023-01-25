@@ -1,4 +1,4 @@
-export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_QUESTIONS_LOADING" | "SET_DISPLAYED_QUESTION"
+export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_QUESTIONS_LOADING" | "SET_DISPLAYED_QUESTION" | "RESET"
 
 export type iQuestion = {
     clientMessage: string;

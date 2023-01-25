@@ -11,6 +11,9 @@ const SessionReducer = (state = SESSION_REDUCER_INITIAL_STATE, action: iAction<S
         case "SET_DATA":
             return { ...state, data: action.payload as iData, hasSession: !!action.payload }
 
+        case "RESET":
+            return SESSION_REDUCER_INITIAL_STATE
+
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-export type SessionActionTypes = "SET_DATA"
+export type SessionActionTypes = "SET_DATA" | "RESET"
 
 export interface iUser {
     id: string;

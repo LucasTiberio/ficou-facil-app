@@ -83,7 +83,7 @@ const getUserHistoric = () => {
 
 const resetQuestions = (): iAction<QuestionsActionTypes, undefined> => {
     return {
-        type: undefined,
+        type: "RESET",
     }
 }
 

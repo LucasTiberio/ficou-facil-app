@@ -22,7 +22,10 @@ const QuestionsReducer = (state = QUESTIONS_REDUCER_INITIAL_STATE, action: iActi
         case "SET_QUESTIONS_LOADING":
             return { ...state, isQuestionsLoading: action.payload as boolean }
 
-        default:
+        case "RESET":
+            return QUESTIONS_REDUCER_INITIAL_STATE
+
+        default: 
             return state;
     }
 }

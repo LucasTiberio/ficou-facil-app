@@ -24,7 +24,7 @@ const hideGlobalLoading = (): iAction<ThemeActionTypes, boolean> => ({
 })
 
 const resetTheme = (): iAction<ThemeActionTypes, boolean> => ({
-    type: undefined,
+    type: "RESET",
 })
 
 const ThemeActions = {
