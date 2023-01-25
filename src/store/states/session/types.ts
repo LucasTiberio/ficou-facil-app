@@ -1,8 +1,17 @@
 export type SessionActionTypes = "SET_DATA"
 
-export type iData = {
+export interface iUser {
+    id: string;
+    name: string;
+    email: string;
+    picture: string;
+    locale: string;
+    maxDate: string;
+}
+
+export interface iData {
     token: string;
-    user?: any;
+    user?: iUser;
 }
 
 export interface iSessionState {

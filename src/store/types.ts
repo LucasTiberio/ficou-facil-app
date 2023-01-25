@@ -5,8 +5,8 @@ import { iThemeState } from "./states/theme/types";
 type iPayloadType = Record<string, any> | boolean | string | number
 
 export interface iAction<Type, Payload = iPayloadType> {
-    type: Type;
-    payload: Payload
+    type?: Type;
+    payload?: Payload
     meta?: Record<string, any>
 }
 

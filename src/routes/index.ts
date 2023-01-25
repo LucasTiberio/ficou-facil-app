@@ -1,6 +1,7 @@
 import CameraPage from "../pages/CameraPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
+import ProfilePage from "../pages/ProfilePage";
 import { PAGES } from "./pages";
 
 const routes: iRoute[] = [
@@ -18,6 +19,12 @@ const routes: iRoute[] = [
     {
         name: PAGES.CAMERA,
         component: CameraPage,
+        needSession: true,
+        hideNavigationBar: true,
+    },
+    {
+        name: PAGES.PROFILE,
+        component: ProfilePage,
         needSession: true,
         hideNavigationBar: false,
     }

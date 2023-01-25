@@ -18,6 +18,10 @@ const NavigationBar = () => {
     const handleClickCamera = () => {
         navigation.navigate(PAGES.CAMERA)
     }
+
+    const handleClickProfile = () => {
+        navigation.navigate(PAGES.PROFILE)
+    }
     
     return (
         <FloatingContainer>
@@ -27,12 +31,12 @@ const NavigationBar = () => {
                         <AntDesign
                             name="doubleleft"
                             size={24}
-                            color="black"
+                            color="#161616"
                         />
                         <FontAwesome
                             name="info-circle"
                             size={47}
-                            color="black"
+                            color="#161616"
                         />
                     </LeftActionWrapper>
 
@@ -44,13 +48,13 @@ const NavigationBar = () => {
                         />
                     </CameraWrapper>
 
-                    <RightActionWrapper>
+                    <RightActionWrapper onPress={handleClickProfile}>
                         <FontAwesome
                             name="user-circle"
                             size={38}
-                            color="black"
+                            color="#161616"
                         />
-                        <AntDesign name="doubleright" size={24} color="black" />
+                        <AntDesign name="doubleright" size={24} color="#161616" />
                     </RightActionWrapper>
                 </StyledNavigation>
             </Shadow>

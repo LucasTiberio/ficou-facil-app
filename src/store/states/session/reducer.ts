@@ -1,5 +1,5 @@
 import { iAction } from "../../types";
-import { iSessionState, SessionActionTypes } from "./types";
+import { iData, iSessionState, SessionActionTypes } from "./types";
 
 const SESSION_REDUCER_INITIAL_STATE: iSessionState = {
     data: null,

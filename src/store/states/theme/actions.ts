@@ -23,11 +23,16 @@ const hideGlobalLoading = (): iAction<ThemeActionTypes, boolean> => ({
     payload: false
 })
 
+const resetTheme = (): iAction<ThemeActionTypes, boolean> => ({
+    type: undefined,
+})
+
 const ThemeActions = {
     showNavigationBar,
     hideNavigationBar,
     showGlobalLoading,
-    hideGlobalLoading
+    hideGlobalLoading,
+    resetTheme
 }
 
 export default ThemeActions;

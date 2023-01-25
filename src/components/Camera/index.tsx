@@ -78,14 +78,14 @@ const Camera = ({
                         <MaterialCommunityIcons
                             name="file-send"
                             size={42}
-                            color="black"
+                            color="#161616"
                         />
                     </SendPictureButton>
                     <RetakePictureButton onPress={handleUnfreezeCamera}>
                         <MaterialCommunityIcons
                             name="camera-retake"
                             size={42}
-                            color="black"
+                            color="#161616"
                         />
                     </RetakePictureButton>
                 </Fragment>

@@ -23,7 +23,7 @@ export const ButtonWrapper = styled.View`
 `
 
 export const ButtonLabel = styled.Text`
-    color: black;
+    color: #161616;
 
     font-weight: 500;
     font-size: 18px;

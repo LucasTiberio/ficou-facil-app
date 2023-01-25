@@ -30,13 +30,13 @@ export const CameraWrapper = styled.TouchableOpacity`
     height: 70px;
     border-radius: 100%;
     
-    background-color: black;
+    background-color: #161616;
 
     align-items: center;
     justify-content: center;
 `
 
-export const LeftActionWrapper = styled.View`
+export const LeftActionWrapper = styled.TouchableOpacity`
     position: absolute;
     top: 0;
     left: 0;
@@ -55,7 +55,7 @@ export const LeftActionWrapper = styled.View`
     border-radius: 2px;
 `
 
-export const RightActionWrapper = styled.View`
+export const RightActionWrapper = styled.TouchableOpacity`
     position: absolute;
     top: 0;
     right: 0;

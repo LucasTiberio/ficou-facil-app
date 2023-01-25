@@ -8,6 +8,7 @@ import { PAGES } from "../../routes/pages"
 import { useDispatch } from "react-redux"
 import QuestionActions from "../../store/states/questions/actions"
 import { dispatchAsync } from "../../shared/utils"
+import ReturnFloatingComponent from "../../components/ReturnFloatingComponent"
 
 const CameraPage = () => {
     const dispatch = useDispatch()
@@ -30,6 +31,8 @@ const CameraPage = () => {
 
     return (
         <Container>
+            <ReturnFloatingComponent page={PAGES.HOME}/>
+            
             <Camera
                 onTakePicture={handleTakePicture}
                 onSubmitPicture={handleSubmitPicture}

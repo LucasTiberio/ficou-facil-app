@@ -3,6 +3,7 @@ import sendMessageIntegration from "../../../integrations/api/sendMessageIntegra
 import { iAction } from "../../types";
 import ThemeActions from "../theme/actions";
 import { iQuestion, QuestionsActionTypes, QuestionType } from "./types";
+import { adaptDataIntoQuestions } from "./utils";
 
 const addQuestionAction = (question: iQuestion): iAction<QuestionsActionTypes, iQuestion> => {
     return {
@@ -61,25 +62,28 @@ const setQuestionsLoadingAction = (bool: boolean): iAction<QuestionsActionTypes,
 
 const getUserHistoric = () => {
     return (dispatch: any, getState: any) => {
-        // Verify historic is empty
         const { questions: questionState } = getState()
         const { questions = [] } = questionState;
 
-        if (!questions.length) {
-            fetchHistoricIntegration().then((historicData = []) => {
-                const adaptedDataIntoQuestions = historicData.map(
-                    ({ clientMessage, iaMessage }) => 
-                    ({ clientMessage, iaMessage })
-                )
-    
-                dispatch(setQuestionsLoadingAction(true))
-    
-                dispatch(setQuestionsAction(adaptedDataIntoQuestions))
-    
-                dispatch(setQuestionsLoadingAction(false))
-            });
+        if (questions.length) {
+            return;
         }
 
+        dispatch(setQuestionsLoadingAction(true))
+
+        fetchHistoricIntegration().then((historicData = []) => {
+            const adaptedDataIntoQuestions = historicData.map(adaptDataIntoQuestions)
+
+            dispatch(setQuestionsAction(adaptedDataIntoQuestions))
+
+            dispatch(setQuestionsLoadingAction(false))
+        });
+    }
+}
+
+const resetQuestions = (): iAction<QuestionsActionTypes, undefined> => {
+    return {
+        type: undefined,
     }
 }
 
@@ -90,6 +94,7 @@ const QuestionActions = {
     showQuestionModalAction,
     hideQuestionModalAction,
     getUserHistoric,
+    resetQuestions,
 }
 
 export default QuestionActions;

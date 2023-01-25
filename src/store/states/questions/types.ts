@@ -3,6 +3,7 @@ export type QuestionsActionTypes = "ADD_QUESTION" | "SET_QUESTIONS" | "SET_QUEST
 export type iQuestion = {
     clientMessage: string;
     iaMessage: string;
+    isPicture?: boolean;
 } | null;
 
 export interface QuestionType {

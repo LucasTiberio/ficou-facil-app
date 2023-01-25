@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import storageKeys from "../../shared/storageKeys";
 
-type iFetchHistoricIntegration = {
+export type iFetchHistoricIntegration = {
     isPicture: boolean;
     createdAt: string;
     iaMessage: string;

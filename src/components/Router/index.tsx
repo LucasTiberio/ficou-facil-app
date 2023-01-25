@@ -20,26 +20,28 @@ const Router = ({ routes }: Props) => {
     }, [])
 
     return (
-        <Stack.Navigator
-            initialRouteName={initialRouteName}
-            screenOptions={{
-                header: () => null,
-            }}
-        >
-            {routes.map(({ name, component, needSession }) => {
-                if (needSession && !hasSession) {
-                    return null;
-                }
+        <>
+            <Stack.Navigator
+                initialRouteName={initialRouteName}
+                screenOptions={{
+                    header: () => null,
+                }}
+            >
+                {routes.map(({ name, component, needSession }) => {
+                    if (needSession && !hasSession) {
+                        return null;
+                    }
 
-                return (
-                    <Stack.Screen
-                        key={`route-item${name}`}
-                        name={name}
-                        component={component}
-                    />
-                )
-            })}
-        </Stack.Navigator>
+                    return (
+                        <Stack.Screen
+                            key={`route-item${name}`}
+                            name={name}
+                            component={component}
+                        />
+                    )
+                })}
+            </Stack.Navigator>
+        </>
     )
 }
 
